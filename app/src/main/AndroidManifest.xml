@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="temple.ground.ipcserver">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AIDLServer"
+        tools:targetApi="31">
+        <activity
+            android:name="temple.ground.ipcserver.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name="temple.ground.ipcserver.IPCServerService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="aidl_palisade" />
+                <action android:name="messenger_palisade" />
+            </intent-filter>
+        </service>
+        <receiver android:name=".IPCBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="broadcast_palisade" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
